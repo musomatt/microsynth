@@ -1,0 +1,68 @@
+.oscillator {
+  border-radius: 3px;
+  background-color: #293d4a;
+  padding: 7px;
+}
+
+.oscillator_title {
+  padding: 14px;
+  color: #fff;
+  background-color: #0c1820;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.oscillator_waves,
+.oscillator_controls {
+  background-color: #15242d;
+  margin-top: 7px;
+}
+
+.oscillator_wave__container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.oscillator_wave {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 25%;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  border-bottom: 2px solid #15242d;
+}
+
+.oscillator_wave--selected {
+  border-bottom: 2px solid #65ceff;
+}
+
+.oscillator_wave > svg path {
+  fill: #577b92;
+  transition: fill 0.25s;
+}
+
+.oscillator_wave:hover > svg path {
+  fill: #fff;
+}
+
+.oscillator_wave--selected > svg path {
+  fill: #fff;
+}
+
+.oscillator_controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 0px 21px 0px;
+}
+
+.oscillator_controls > div {
+  flex: 1 1 64px;
+}

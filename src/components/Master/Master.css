@@ -1,0 +1,17 @@
+.master {
+  border-radius: 3px;
+  background-color: #293d4a;
+  padding: 7px;
+}
+
+.master--inner {
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  background-color: #15242d;
+  padding: 25px 0px;
+}
+
+.master--inner > div {
+  flex: 1 1 50%;
+}

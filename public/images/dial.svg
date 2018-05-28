@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="dial-a" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#C8E2E5"/>
+      <stop offset="100%" stop-color="#ABD3E3"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(4 4)">
+    <circle cx="28" cy="28" r="30" fill="url(#dial-a)" stroke="#151B1F" stroke-width="4"/>
+    <rect width="17" height="3" x="3" y="27" fill="#192630"/>
+  </g>
+</svg>

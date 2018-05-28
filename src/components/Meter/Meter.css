@@ -1,0 +1,12 @@
+.meter {
+  background-color: #111619;
+  height: 7px;
+  margin-bottom: 7px;
+}
+
+.meter__level {
+  background-color: #65ceff;
+  transform: scaleX(0);
+  -webkit-transform-origin-x: 0;
+  height: 7px;
+}

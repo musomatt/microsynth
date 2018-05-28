@@ -1,0 +1,26 @@
+.dial_control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dial {
+  stroke: #293d4a;
+  stroke-width: 5px;
+  fill: none;
+}
+
+.dial--level {
+  stroke: #65ceff;
+  stroke-width: 5px;
+  fill: none;
+}
+
+.dial_control p {
+  color: #fff;
+  text-align: center;
+  margin-top: 15px;
+  letter-spacing: 2px;
+  user-select: none;
+}
