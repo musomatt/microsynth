@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App";
-//import registerServiceWorker from './registerServiceWorker';
+import Synth from "components/Synth";
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<Synth />, document.getElementById("app"));
