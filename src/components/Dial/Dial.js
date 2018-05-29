@@ -1,5 +1,5 @@
 import React from "react";
-import { getArc } from "utils/arc";
+import { getArc } from "utils/ArcUtils";
 
 import "./Dial.css";
 
