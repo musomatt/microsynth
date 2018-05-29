@@ -1,11 +1,12 @@
 import React from "react";
 import Dial from "components/Dial";
+import { WAVEFORMS } from "constants/WaveConstants";
 
 import "./Oscillator.css";
 
 class Oscillator extends React.PureComponent {
   state = {
-    currentWaveform: "sine"
+    currentWaveform: WAVEFORMS.SINE
   };
 
   changeWaveform = type => {
@@ -28,11 +29,11 @@ class Oscillator extends React.PureComponent {
           <div className="oscillator_wave__container">
             <div
               className={
-                this.state.currentWaveform === "sine"
+                this.state.currentWaveform === WAVEFORMS.SINE
                   ? "oscillator_wave oscillator_wave--selected"
                   : "oscillator_wave"
               }
-              onClick={() => this.changeWaveform("sine")}
+              onClick={() => this.changeWaveform(WAVEFORMS.SINE)}
               title="Sine"
             >
               <svg
@@ -46,11 +47,11 @@ class Oscillator extends React.PureComponent {
             </div>
             <div
               className={
-                this.state.currentWaveform === "sawtooth"
+                this.state.currentWaveform === WAVEFORMS.SAWTOOTH
                   ? "oscillator_wave oscillator_wave--selected"
                   : "oscillator_wave"
               }
-              onClick={() => this.changeWaveform("sawtooth")}
+              onClick={() => this.changeWaveform(WAVEFORMS.SAWTOOTH)}
             >
               <svg
                 height="24"
@@ -63,11 +64,11 @@ class Oscillator extends React.PureComponent {
             </div>
             <div
               className={
-                this.state.currentWaveform === "square"
+                this.state.currentWaveform === WAVEFORMS.SQUARE
                   ? "oscillator_wave oscillator_wave--selected"
                   : "oscillator_wave"
               }
-              onClick={() => this.changeWaveform("square")}
+              onClick={() => this.changeWaveform(WAVEFORMS.SQUARE)}
             >
               <svg
                 height="24"
@@ -80,11 +81,11 @@ class Oscillator extends React.PureComponent {
             </div>
             <div
               className={
-                this.state.currentWaveform === "triangle"
+                this.state.currentWaveform === WAVEFORMS.TRIANGLE
                   ? "oscillator_wave oscillator_wave--selected"
                   : "oscillator_wave"
               }
-              onClick={() => this.changeWaveform("triangle")}
+              onClick={() => this.changeWaveform(WAVEFORMS.TRIANGLE)}
             >
               <svg
                 height="24"

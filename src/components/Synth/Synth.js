@@ -1,5 +1,7 @@
 import React from "react";
 import SynthUI from "components/SynthUI";
+import { WAVEFORMS } from "constants/WaveConstants";
+import { NOTES } from "constants/NoteConstants";
 
 class Synth extends React.Component {
   constructor(props) {
@@ -7,37 +9,10 @@ class Synth extends React.Component {
 
     this.state = {
       isPlaying: false,
-      oscWaveformType: "sine"
+      oscWaveformType: WAVEFORMS.SINE
     };
 
     this.oscList = [];
-
-    this.notes = [];
-    this.notes.push({ octave: 3, note: "C", freq: 130.81 });
-    this.notes.push({ octave: 3, note: "C#", freq: 138.59 });
-    this.notes.push({ octave: 3, note: "D", freq: 146.83 });
-    this.notes.push({ octave: 3, note: "D#", freq: 155.56 });
-    this.notes.push({ octave: 3, note: "E", freq: 164.81 });
-    this.notes.push({ octave: 3, note: "F", freq: 174.61 });
-    this.notes.push({ octave: 3, note: "F#", freq: 185 });
-    this.notes.push({ octave: 3, note: "G", freq: 196 });
-    this.notes.push({ octave: 3, note: "G#", freq: 207.65 });
-    this.notes.push({ octave: 3, note: "A", freq: 220 });
-    this.notes.push({ octave: 3, note: "A#", freq: 233.08 });
-    this.notes.push({ octave: 3, note: "B", freq: 246.94 });
-    this.notes.push({ octave: 4, note: "C", freq: 261.63 });
-    this.notes.push({ octave: 4, note: "C#", freq: 277.18 });
-    this.notes.push({ octave: 4, note: "D", freq: 293.66 });
-    this.notes.push({ octave: 4, note: "D#", freq: 311.13 });
-    this.notes.push({ octave: 4, note: "E", freq: 329.63 });
-    this.notes.push({ octave: 4, note: "F", freq: 349.23 });
-    this.notes.push({ octave: 4, note: "F#", freq: 369.99 });
-    this.notes.push({ octave: 4, note: "G", freq: 392.0 });
-    this.notes.push({ octave: 4, note: "G#", freq: 415.3 });
-    this.notes.push({ octave: 4, note: "A", freq: 440.0 });
-    this.notes.push({ octave: 4, note: "A#", freq: 466.16 });
-    this.notes.push({ octave: 4, note: "B", freq: 493.88 });
-    this.notes.push({ octave: 4, note: "C", freq: 523.25 });
 
     this.arpShape = [0, 4, 7, 11, 12, 11, 7, 4];
     this.arpPos = 0;
@@ -134,7 +109,7 @@ class Synth extends React.Component {
       this.arpPos = 0;
     }
 
-    let next = this.notes[this.arpShape[this.arpPos]].freq;
+    let next = NOTES[this.arpShape[this.arpPos]].freq;
 
     this.arpPos++;
 
