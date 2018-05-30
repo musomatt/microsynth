@@ -16,6 +16,16 @@ class Oscillator extends React.PureComponent {
     }
   };
 
+  onChangeTune = () => {};
+
+  onChangePan = level => {
+    this.props.onSettingsChange(this.props.id, { pan: level });
+  };
+
+  onChangeVolume = level => {
+    this.props.onSettingsChange(this.props.id, { gain: level });
+  };
+
   render() {
     return (
       <div className="oscillator">
@@ -96,9 +106,27 @@ class Oscillator extends React.PureComponent {
           </div>
         </div>
         <div className="oscillator_controls">
-          <Dial min="0" max="100" level="40" title="TUNE" />
-          <Dial min="0" max="100" level="30" title="PAN" />
-          <Dial min="0" max="100" level="20" title="VOL" />
+          <Dial
+            min="-1"
+            max="1"
+            level="0"
+            title="TUNE"
+            onChangeValue={this.onChangeTune}
+          />
+          <Dial
+            min="-1"
+            max="1"
+            level="0"
+            title="PAN"
+            onChangeValue={this.onChangePan}
+          />
+          <Dial
+            min="0"
+            max="1"
+            level="0.5"
+            title="VOL"
+            onChangeValue={this.onChangeVolume}
+          />
         </div>
       </div>
     );
