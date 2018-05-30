@@ -11,10 +11,7 @@ class Oscillator extends React.PureComponent {
 
   changeWaveform = type => {
     if (type !== this.state.currentWaveform) {
-      // request synth code to switch type
-      this.props.onWaveChange(1, type);
-
-      // update our visual state
+      this.props.onSettingsChange(this.props.id, { type });
       this.setState({ currentWaveform: type });
     }
   };

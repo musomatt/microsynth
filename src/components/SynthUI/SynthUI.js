@@ -13,14 +13,23 @@ const SynthUI = ({
   masterGainLevel,
   onWaveChange,
   onMasterGainChange,
-  onMasterPanChange
+  onMasterPanChange,
+  onOscillatorChange
 }) => {
   return (
     <div className="synth">
       <Meter level={volumeLevel} />
       <div className="controls">
-        <Oscillator title="Oscillator 1" onWaveChange={onWaveChange} />
-        <Oscillator title="Oscillator 2" onWaveChange={onWaveChange} />
+        <Oscillator
+          id="0"
+          title="Oscillator 1"
+          onSettingsChange={onOscillatorChange}
+        />
+        <Oscillator
+          id="1"
+          title="Oscillator 2"
+          onSettingsChange={onOscillatorChange}
+        />
       </div>
       <div className="controls">
         <Arpeggiator

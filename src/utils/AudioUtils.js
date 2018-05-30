@@ -25,7 +25,7 @@ class AudioWrapper {
     // set default oscillator settings
     this.oscillators = [
       { type: "sine", gain: 1, pan: 0 },
-      { type: "square", gain: 0.5, pan: 0 }
+      { type: "sine", gain: 1, pan: 0 }
     ];
 
     // list of oscillators currently playing

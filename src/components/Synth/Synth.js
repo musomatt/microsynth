@@ -51,8 +51,8 @@ class Synth extends React.Component {
     return next;
   };
 
-  waveChange = (oscillator_id, type) => {
-    this.setState({ oscWaveformType: type });
+  onOscillatorChange = (id, settings) => {
+    this.audio.updateOscillatorSettings(id, settings);
   };
 
   onMasterGainChange = level => {
@@ -95,7 +95,7 @@ class Synth extends React.Component {
         onMasterGainChange={this.onMasterGainChange}
         onMasterPanChange={this.onMasterPanChange}
         onTogglePlayback={this.togglePlayback}
-        onWaveChange={this.waveChange}
+        onOscillatorChange={this.onOscillatorChange}
       />
     );
   }
