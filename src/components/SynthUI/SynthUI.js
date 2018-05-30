@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Meter from "components/Meter";
 import Oscillator from "components/Oscillator";
 import Master from "components/Master";
@@ -7,11 +8,10 @@ import Arpeggiator from "components/Arpeggiator";
 import "./SynthUI.css";
 
 const SynthUI = ({
-  onTogglePlayback,
   isPlaying,
   volumeLevel,
   masterGainLevel,
-  onWaveChange,
+  onTogglePlayback,
   onMasterGainChange,
   onMasterPanChange,
   onOscillatorChange
@@ -43,6 +43,15 @@ const SynthUI = ({
       </div>
     </div>
   );
+};
+
+SynthUI.propTypes = {
+  volumeLevel: PropTypes.number,
+  isPlaying: PropTypes.bool.isRequired,
+  onTogglePlayback: PropTypes.func.isRequired,
+  onMasterGainChange: PropTypes.func.isRequired,
+  onMasterPanChange: PropTypes.func.isRequired,
+  onOscillatorChange: PropTypes.func.isRequired
 };
 
 export default SynthUI;

@@ -1,6 +1,5 @@
 import React from "react";
 import SynthUI from "components/SynthUI";
-import { WAVEFORMS } from "constants/WaveConstants";
 import { NOTES } from "constants/NoteConstants";
 import AudioWrapper from "utils/AudioUtils";
 
@@ -13,7 +12,7 @@ class Synth extends React.Component {
     this.arpPos = 0;
     this.arpShape = [0, 4, 7, 11, 12, 11, 7, 4];
 
-    this.toneLength = 0.19;
+    this.toneLength = 0.18;
     this.currentLevel = 0;
   }
 
@@ -72,7 +71,7 @@ class Synth extends React.Component {
       let tone = this.getNextFrequency();
 
       this.audio.playTone(tone, this.toneLength);
-    }, 200);
+    }, 185);
 
     this.setState({ isPlaying: true });
   };

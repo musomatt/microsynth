@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import "./Meter.css";
 
@@ -13,5 +14,9 @@ const Meter = ({ level }) => {
     </div>
   );
 };
+
+Meter.propTypes = {
+  level: PropTypes.number
+}
 
 export default Meter;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Dial from "components/Dial";
 import { WAVEFORMS } from "constants/WaveConstants";
 
@@ -16,7 +17,9 @@ class Oscillator extends React.PureComponent {
     }
   };
 
-  onChangeTune = () => {};
+  onChangeTune = level => {
+    this.props.onSettingsChange(this.props.id, { tune: level });
+  };
 
   onChangePan = level => {
     this.props.onSettingsChange(this.props.id, { pan: level });
@@ -132,5 +135,11 @@ class Oscillator extends React.PureComponent {
     );
   }
 }
+
+Oscillator.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  onSettingsChange: PropTypes.func.isRequired
+};
 
 export default Oscillator;

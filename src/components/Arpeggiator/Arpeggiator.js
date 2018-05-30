@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "./Arpeggiator.css";
 
@@ -13,5 +14,10 @@ const Arpeggiator = ({ onTogglePlayback, isPlaying }) => {
     </div>
   );
 };
+
+Arpeggiator.propTypes = {
+  onTogglePlayback: PropTypes.func.isRequired,
+  isPlaying: PropTypes.bool.isRequired
+}
 
 export default Arpeggiator;

@@ -24,8 +24,8 @@ class AudioWrapper {
 
     // set default oscillator settings
     this.oscillators = [
-      { type: "sine", gain: 1, pan: 0 },
-      { type: "sine", gain: 1, pan: 0 }
+      { type: "sine", gain: 0.5, pan: 0 },
+      { type: "sine", gain: 0.5, pan: 0 }
     ];
 
     // list of oscillators currently playing
@@ -61,8 +61,16 @@ class AudioWrapper {
 
       // apply oscillator settings
       osc.type = this.oscillators[i].type;
-      pan.pan.value = this.oscillators[i].pan;
-      gain.gain.value = this.oscillators[i].gain;
+
+      pan.pan.setValueAtTime(
+        this.oscillators[i].pan,
+        this.audioContext.currentTime
+      );
+
+      gain.gain.setValueAtTime(
+        this.oscillators[i].gain,
+        this.audioContext.currentTime
+      );
 
       // build oscillator audio chain and output to the master gain
       osc.connect(gain);
@@ -80,7 +88,10 @@ class AudioWrapper {
 
     // pass the frequency through all our oscillators
     oscillators.forEach(oscillator => {
-      oscillator.osc.frequency.value = freq;
+      oscillator.osc.frequency.setValueAtTime(
+        freq,
+        this.audioContext.currentTime
+      );
       oscillator.osc.start();
       oscillator.osc.stop(this.audioContext.currentTime + length);
     });

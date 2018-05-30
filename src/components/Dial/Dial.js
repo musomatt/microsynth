@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { getArc } from "utils/ArcUtils";
 
 import "./Dial.css";
@@ -70,5 +71,13 @@ class Dial extends React.PureComponent {
     );
   }
 }
+
+Dial.propTypes = {
+  min: PropTypes.string.isRequired,
+  max: PropTypes.string.isRequired,
+  level: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  onChangeValue: PropTypes.func
+};
 
 export default Dial;
