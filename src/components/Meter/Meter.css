@@ -2,6 +2,7 @@
   background-color: #111619;
   height: 7px;
   margin-bottom: 7px;
+  overflow:hidden;
 }
 
 .meter__level {
