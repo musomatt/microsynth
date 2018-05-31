@@ -24,8 +24,8 @@ class AudioWrapper {
 
     // set default oscillator settings
     this.oscillators = [
-      { type: "sine", gain: 0.5, pan: 0 },
-      { type: "sine", gain: 0.5, pan: 0 }
+      { type: "sine", gain: 0.5, pan: 0, detune: 0 },
+      { type: "sine", gain: 0.5, pan: 0, detune: 0 }
     ];
 
     // list of oscillators currently playing
@@ -41,6 +41,10 @@ class AudioWrapper {
 
   setMasterPanLevel(level) {
     this.masterPanNode.pan.setValueAtTime(level, this.audioContext.currentTime);
+  }
+
+  setDetuneLevel(level) {
+    this.detune = level;
   }
 
   setVolumeUpdate(callback) {
@@ -77,7 +81,7 @@ class AudioWrapper {
       gain.connect(pan);
       pan.connect(this.masterGainNode);
 
-      oscillators.push({ osc, gain, pan });
+      oscillators.push({ osc, gain, pan, detune: this.oscillators[i].detune });
     }
 
     return oscillators;
@@ -92,6 +96,12 @@ class AudioWrapper {
         freq,
         this.audioContext.currentTime
       );
+      
+      oscillator.osc.detune.setValueAtTime(
+        oscillator.detune, 
+        this.audioContext.currentTime
+      );
+
       oscillator.osc.start();
       oscillator.osc.stop(this.audioContext.currentTime + length);
     });

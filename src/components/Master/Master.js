@@ -1,13 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Dial from "components/Dial";
+import Dial from "../Dial";
 
 import "./Master.css";
 
-const Master = ({ onMasterGainChange, onMasterPanChange }) => {
+const Master = ({ 
+  onMasterGainChange, 
+  onMasterPanChange, 
+  onMasterPitchChange 
+}) => {
   return (
     <div className="master">
       <div className="master--inner">
+        <Dial
+          max="1"
+          min="-1"
+          level="0"
+          title="PITCH"
+          onChangeValue={onMasterPitchChange}
+        />
         <Dial
           max="1"
           min="-1"

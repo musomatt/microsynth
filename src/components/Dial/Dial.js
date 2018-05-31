@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { getArc } from "utils/ArcUtils";
+import { getArc } from "../../utils/ArcUtils";
 
 import "./Dial.css";
 

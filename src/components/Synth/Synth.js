@@ -1,7 +1,7 @@
 import React from "react";
-import SynthUI from "components/SynthUI";
-import { NOTES } from "constants/NoteConstants";
-import AudioWrapper from "utils/AudioUtils";
+import SynthUI from "../SynthUI";
+import { NOTES } from "../../constants/NoteConstants";
+import AudioWrapper from "../../utils/AudioUtils";
 
 class Synth extends React.Component {
   constructor(props) {
@@ -14,6 +14,8 @@ class Synth extends React.Component {
 
     this.toneLength = 0.18;
     this.currentLevel = 0;
+    this.pitch = 0;
+    this.octave = 3;
   }
 
   componentDidMount() {
@@ -43,7 +45,11 @@ class Synth extends React.Component {
       this.arpPos = 0;
     }
 
-    let next = NOTES[this.arpShape[this.arpPos]].freq;
+    let noteValue = this.arpShape[this.arpPos];
+    noteValue = noteValue + this.pitch;
+    noteValue = noteValue + (12 * this.octave);
+
+    let next = NOTES[noteValue].freq;
 
     this.arpPos++;
 
@@ -61,6 +67,10 @@ class Synth extends React.Component {
   onMasterPanChange = level => {
     this.audio.setMasterPanLevel(level);
   };
+
+  onMasterPitchChange = level => {
+    this.pitch = Math.floor(level * 100 / 8);
+  }
 
   startArpeggio = () => {
     let note = this.getNextFrequency();
@@ -91,6 +101,7 @@ class Synth extends React.Component {
         volumeLevel={this.state.volume}
         masterGainNode={this.masterGainNode}
         masterPanNode={this.masterPanNode}
+        onMasterPitchChange={this.onMasterPitchChange}
         onMasterGainChange={this.onMasterGainChange}
         onMasterPanChange={this.onMasterPanChange}
         onTogglePlayback={this.togglePlayback}

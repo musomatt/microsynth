@@ -10,6 +10,8 @@ body {
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   background-color: #192128;
   height: 100%;
+  overflow:hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 #app {
@@ -42,6 +44,11 @@ body {
 }
 
 @media (max-width: 550px) {
+  html, body{
+    overflow:auto;
+    -webkit-overflow-scrolling: auto;
+  }
+
   .controls {
     flex-direction: column;
   }
