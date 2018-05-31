@@ -16,9 +16,7 @@ class Synth extends React.Component {
     this.currentLevel = 0;
     this.pitch = 0;
     this.octave = 3;
-  }
 
-  componentDidMount() {
     this.audio = new AudioWrapper();
     this.audio.setMasterGainLevel(0.5);
     this.audio.setMasterPanLevel(0);
@@ -99,6 +97,7 @@ class Synth extends React.Component {
       <SynthUI
         isPlaying={this.state.isPlaying}
         volumeLevel={this.state.volume}
+        deviceSupportsPanning={this.audio.deviceSupportsPanning()}
         masterGainNode={this.masterGainNode}
         masterPanNode={this.masterPanNode}
         onMasterPitchChange={this.onMasterPitchChange}

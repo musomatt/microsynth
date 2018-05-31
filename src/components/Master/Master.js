@@ -7,7 +7,8 @@ import "./Master.css";
 const Master = ({ 
   onMasterGainChange, 
   onMasterPanChange, 
-  onMasterPitchChange 
+  onMasterPitchChange,
+  deviceSupportsPanning
 }) => {
   return (
     <div className="master">
@@ -19,13 +20,17 @@ const Master = ({
           title="PITCH"
           onChangeValue={onMasterPitchChange}
         />
-        <Dial
-          max="1"
-          min="-1"
-          level="0"
-          title="MASTER PAN"
-          onChangeValue={onMasterPanChange}
-        />
+        {
+          (deviceSupportsPanning) ? (
+            <Dial
+              max="1"
+              min="-1"
+              level="0"
+              title="MASTER PAN"
+              onChangeValue={onMasterPanChange}
+            />
+          ) : ""
+        }
         <Dial
           max="1"
           min="0"
@@ -40,7 +45,8 @@ const Master = ({
 
 Master.propTypes = {
   onMasterGainChange: PropTypes.func.isRequired,
-  onMasterPanChange: PropTypes.func.isRequired
+  onMasterPanChange: PropTypes.func.isRequired,
+  deviceSupportsPanning: PropTypes.bool.isRequired
 };
 
 export default Master;

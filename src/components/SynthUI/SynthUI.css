@@ -49,6 +49,10 @@ body {
     -webkit-overflow-scrolling: auto;
   }
 
+  #app{
+    align-items:start;
+  }
+
   .controls {
     flex-direction: column;
   }

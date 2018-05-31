@@ -116,13 +116,17 @@ class Oscillator extends React.PureComponent {
             title="TUNE"
             onChangeValue={this.onChangeTune}
           />
-          <Dial
-            min="-1"
-            max="1"
-            level="0"
-            title="PAN"
-            onChangeValue={this.onChangePan}
-          />
+          {
+            (this.props.deviceSupportsPanning) ? (
+              <Dial
+                min="-1"
+                max="1"
+                level="0"
+                title="PAN"
+                onChangeValue={this.onChangePan}
+              />
+            ) : "" 
+          }
           <Dial
             min="0"
             max="1"
@@ -139,7 +143,8 @@ class Oscillator extends React.PureComponent {
 Oscillator.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string,
-  onSettingsChange: PropTypes.func.isRequired
+  onSettingsChange: PropTypes.func.isRequired,
+  deviceSupportsPanning: PropTypes.bool.isRequired
 };
 
 export default Oscillator;

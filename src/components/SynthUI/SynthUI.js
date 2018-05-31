@@ -15,7 +15,8 @@ const SynthUI = ({
   onMasterPitchChange,
   onMasterGainChange,
   onMasterPanChange,
-  onOscillatorChange
+  onOscillatorChange,
+  deviceSupportsPanning
 }) => {
   return (
     <div className="synth">
@@ -25,11 +26,13 @@ const SynthUI = ({
           id="0"
           title="Oscillator 1"
           onSettingsChange={onOscillatorChange}
+          deviceSupportsPanning={deviceSupportsPanning}
         />
         <Oscillator
           id="1"
           title="Oscillator 2"
           onSettingsChange={onOscillatorChange}
+          deviceSupportsPanning={deviceSupportsPanning}
         />
       </div>
       <div className="controls">
@@ -41,6 +44,7 @@ const SynthUI = ({
           onMasterPitchChange={onMasterPitchChange}
           onMasterPanChange={onMasterPanChange}
           onMasterGainChange={onMasterGainChange}
+          deviceSupportsPanning={deviceSupportsPanning}
         />
       </div>
     </div>
@@ -54,7 +58,8 @@ SynthUI.propTypes = {
   onMasterPitchChange: PropTypes.func.isRequired,
   onMasterGainChange: PropTypes.func.isRequired,
   onMasterPanChange: PropTypes.func.isRequired,
-  onOscillatorChange: PropTypes.func.isRequired
+  onOscillatorChange: PropTypes.func.isRequired,
+  deviceSupportsPanning: PropTypes.bool
 };
 
 export default SynthUI;

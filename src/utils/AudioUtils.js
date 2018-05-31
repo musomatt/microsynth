@@ -5,13 +5,20 @@ class AudioWrapper {
       window.webkitAudioContext)();
 
     // master audio nodes for the oscillators to talk to
-    this.masterPanNode = this.audioContext.createStereoPanner();
+    if (typeof this.audioContext.createStereoPanner === 'function'){
+      this.masterPanNode = this.audioContext.createStereoPanner();
+    }
+
     this.masterGainNode = this.audioContext.createGain();
     this.masterProcessor = this.audioContext.createScriptProcessor(2048);
 
     // chain of master audio nodes
-    this.masterGainNode.connect(this.masterPanNode);
-    this.masterPanNode.connect(this.masterProcessor);
+    if (this.masterPanNode) {
+      this.masterGainNode.connect(this.masterPanNode);
+      this.masterPanNode.connect(this.masterProcessor);
+    } else {
+      this.masterGainNode.connect(this.masterProcessor);
+    }
 
     this.masterProcessor.connect(this.audioContext.destination);
     this.masterProcessor.onaudioprocess = this.processVolumeLevel;
@@ -40,7 +47,9 @@ class AudioWrapper {
   }
 
   setMasterPanLevel(level) {
-    this.masterPanNode.pan.setValueAtTime(level, this.audioContext.currentTime);
+    if (this.masterPanNode){
+      this.masterPanNode.pan.setValueAtTime(level, this.audioContext.currentTime);
+    }
   }
 
   setDetuneLevel(level) {
@@ -51,6 +60,10 @@ class AudioWrapper {
     this.processorCallback = callback;
   }
 
+  deviceSupportsPanning(){
+    return Boolean((this.masterPanNode));
+  }
+
   updateOscillatorSettings(id, settings) {
     Object.assign(this.oscillators[id], settings);
   }
@@ -59,18 +72,22 @@ class AudioWrapper {
     let oscillators = [];
 
     for (let i = 0; i < this.oscillators.length; i++) {
+      let pan = null;
       let osc = this.audioContext.createOscillator();
-      let pan = this.audioContext.createStereoPanner();
       let gain = this.audioContext.createGain();
+
+      if (this.deviceSupportsPanning()){
+        pan = this.audioContext.createStereoPanner();
+
+        pan.pan.setValueAtTime(
+          this.oscillators[i].pan,
+          this.audioContext.currentTime
+        );
+      }
 
       // apply oscillator settings
       osc.type = this.oscillators[i].type;
-
-      pan.pan.setValueAtTime(
-        this.oscillators[i].pan,
-        this.audioContext.currentTime
-      );
-
+      
       gain.gain.setValueAtTime(
         this.oscillators[i].gain,
         this.audioContext.currentTime
@@ -78,8 +95,13 @@ class AudioWrapper {
 
       // build oscillator audio chain and output to the master gain
       osc.connect(gain);
-      gain.connect(pan);
-      pan.connect(this.masterGainNode);
+      
+      if (this.deviceSupportsPanning()){
+        gain.connect(pan);
+        pan.connect(this.masterGainNode);
+      } else {
+        gain.connect(this.masterGainNode);
+      }
 
       oscillators.push({ osc, gain, pan, detune: this.oscillators[i].detune });
     }
