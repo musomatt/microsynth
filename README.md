@@ -5,7 +5,7 @@ My implementation of a web-based microsynth using the Web Audio API. This is cur
 
 ![Microsynth](https://github.com/musomatt/microsynth/raw/master/public/images/microsynth.png)
 
-##### Installation
+### Installation
 To set up a local dev version of this project, clone the repository and run:
 `npm install && npm start`
 
@@ -16,14 +16,14 @@ If you want to run a compiled production version of the app you can run `npm run
 If you have any issues running this locally you can [view the version I'm hosting here](https://microsynth.musomatt.com/).
 
 
-##### Features
+### Features
 - Two oscillators to manipulate with their own gain, pan, and tune controls
 - Master controls for pitch/pan/gain
 - Volume metering to show current levels
 - Plays a standard dominant 7th arp pattern.
 - Will render/play on desktop and mobile devices
 
-##### Todo list:
+### Todo list:
 I will try and find time to fix a few remaining issues:
 - **test suite**: I haven't yet implemented testing, I was hoping I'd have time to get this done, but not managed to get that sorted. I've focused mostly on making the UI elegant and getting everything working correctly so far. 
 - **dial control on mobile devices**: while the UI is responsive to browser sizes, it can be improved and there currently isn't support for touch control of the input dials.
