@@ -17,11 +17,11 @@ If you have any issues running this locally you can [view the version I'm hostin
 
 
 ### Features
-- Two oscillators to manipulate with their own gain, pan, and tune controls
+- Two oscillators to manipulate with their own waveform, gain, pan, and tune controls
 - Master controls for pitch/pan/gain
 - Volume metering to show current levels
 - Plays a standard dominant 7th arp pattern.
-- Will render/play on desktop and mobile devices
+- Will render/play on desktop and mobile devices (providing your phone isn't switched to silent)
 
 ### Todo list:
 I will try and find time to fix a few remaining issues:
